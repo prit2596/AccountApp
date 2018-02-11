@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+<script>
+    x=1;
+</script>
+<div class="container" style="margin-top: 50px;"></div>
+<div class="container-fluid">
+    <h2 align="center">Accounts</h2>
+    <hr>
+    <div class="col-md-12">
+      <div class="col-md-5 col-md-push-4">
+      <button class="btn btn-primary btn-block" type="button" data-toggle="modal" data-target="#exampleModal">Add Invoice</button>
+      <br>
+      {% if accounts %}<button class="btn btn-danger btn-block" type="button" data-toggle="modal" data-target="#PDFModal">Generate PDF</button>{% endif %}
+      <br>
+    </div>
+    </div>
+    <div class="col-md-12">
+      <br>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="panel panel-success" >
+                    <div class="panel-heading">Party Information</div>
+                    <div class="panel-body">
+                            <img id="img_{{party_info.id}}" src="" class="img-responsive">
+                    </div>
+                    <ul class="list-group">
+                            <li class="list-group-item"><h3><b>{{party_info.name}}</b></h3></li>
+                            <li class="list-group-item"><a href="/durga-petroleum/edit/{{party_info.id}}/" class="btn btn-primary">Edit Profile</a></li>
+                            <li class="list-group-item"><h4>Contact Number: {{party_info.contact}}</h4></li>
+                    </ul>
+                </div>
+              </div>
+              <script>
+                    var id = "{{party_info.id}}"%11;
+                    console.log(typeof(id));
+                    vid = id.toString();
+                    vid = '/static/images/' + vid + '.jpg';
+                    console.log(vid);
+                    document.getElementById('img_{{party_info.id}}').src = vid;
+            </script>
+        <div class="col-md-9">
+            {% if accounts %}
+                <table class="table table-hover table-bordered">
+                        <thead>
+                          <tr>
+                            <th scope="col">Sr No.</th>
+                            <th scope="col">Item</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Vehicle No.</th>
+                            <th scope="col">Challan No.</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Rate</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for i in accounts %}
+                          <tr>
+                            <th scope="row"><script> document.write(x); x++;</script></th>
+                            <td>{{i.item}}</td>
+                            <td>{{i.date}}</td>
+                            <td>{{i.vehicle_no}}</td>
+                            <td>{{i.challan_no}}</td>
+                            <td>{{i.quantity}}</td>
+                            <td>{{i.rate}}</td>
+                            <td>{{i.amount}}</td>
+                            <td><button type="button" class="btn btn-warning" onclick="window.location.href='/durga-petroleum/editInvoice/{{i.id}}/'">Edit</button>
+                              <button type="button" class="btn btn-danger" onclick="window.location.href='/durga-petroleum/deleteInvoice/{{i.id}}/'">Delete</button>
+                            </td>
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                </table>    
+            {%endif %}    
+        </div>
+    </div>
+    </div>
+</div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 align="center" class="modal-title" id="exampleModalLabel"><b>Invoice</b></h3>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form method="post">{% csrf_token %}
+                    {{form|crispy}}
+                    
+                  
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <input type="submit" value="Submit" class="btn btn-primary">
+                </div>
+            </form>
+              </div>
+            </div>
+          </div>
+          <div class="modal fade" id="PDFModal" tabindex="-1" role="dialog" aria-labelledby="PDFModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h3 align="center" class="modal-title" id="PDFModalLabel"><b>Generate PDF</b></h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form method="post" action="/durga-petroleum/generatePDF/{{party_info.id}}/">{% csrf_token %}
+                      <div class="form-group">
+                        <label for="Bill">Bill No.*</label>
+                        <input type="number" class="form-control" name="bill" required="True">
+                      </div>
+                      <div class="form-group">
+                        <label for="Start_Date">Start Date</label>
+                        <input type="date" class="form-control" name="start_date" required="True">
+                      </div>
+                      <div class="form-group">
+                          <label for="End_Date">End Date</label>
+                          <input type="date" class="form-control" name="end_date" required="True">
+                        </div>
+                      
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <input type="submit" value="Submit" class="btn btn-primary">
+                  </div>
+              </form>
+                </div>
+              </div>
+            </div>
+{% endblock %}

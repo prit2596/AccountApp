@@ -1,0 +1,194 @@
+{% extends 'base_index.html' %}
+{% block content %}
+{% load static %}
+<link href="{% static "css/card.css" %}" rel="stylesheet" type="text/css" />
+<style>
+    .wrapper{
+        position: absolute;
+        top:50%;
+        right:56%;
+  
+    }
+    #sitenamebutton {
+    position: absolute;
+    top: 50%;
+    border: 2px solid #000000;
+    font-family: myFirstFont;
+    font-size : 36px;
+    }
+    #sitenamebutton:hover{
+        background-color: transparent;
+         border: 2px solid #fff;
+        color: #fff;
+    }
+        @font-face {
+        font-family: myFirstFont;
+        src: url(/static/css/LoversQuarrel-Regular.ttf);
+        }
+
+
+        body {
+            position: relative; 
+        }
+        #section1 {padding-top:50px;height:800px;background-color: black}
+        #section2 {padding-top:50px;height:500px;color: #fff; background-color: #d1e0eb;}
+        #section3 {padding-top:50px;height:300px;color: #fff; background-color: #0c3c60;}
+
+        </style>
+      </head>
+      <body>
+      
+      <nav class="navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>                        
+            </button>
+            <a class="navbar-brand" href="#">DURGA PETROLEUM</a>
+          </div>
+          <div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="/durga-petroleum/party-names/">CUSTOMERS</a></li>
+                <li><a href="#section2">ABOUT US</a></li>
+                <li><a href="#section3">CONTACT</a></li>
+                
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>    
+      
+      <div id="section1" class="container-fluid">
+          <div class="container">
+            <img alt="" src="/static/images/petrol1.jpg" style="height:750px;width:100%;opacity:0.7;">
+
+        </div>
+        <div class="wrapper">
+                <button id="sitenamebutton" class="btn btn-lg">Durga Petroleum</button>
+        </div>
+      </div>
+      <div id="section2" class="container-fluid">
+
+            <div class="container">
+                <h1 align="center" style="color:#0c3c60">ABOUT US</h1>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="card hovercard" >
+                                <div class="cardheader">
+                                    
+                                </div>
+                                <div class="avatar">
+                                    <img alt="" src="/static/images/8.jpg">
+                                </div>
+                                <div class="info">
+                                    <div class="title">
+                                        Vijay Thakkar
+                                    </div>
+                                    <b>
+                                    <div class="desc">Entrepreneur</div>
+                                    <div class="desc">Gujarat, India</div></b>
+                                                                    </div>
+                                </div>
+                        </div>
+
+                        <div class="col-lg-2"></div>
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="card hovercard" >
+                                <div class="cardheader">
+                                    
+                                </div>
+                                <div class="avatar">
+                                    <img alt="" src="/static/images/2.jpg">
+                                </div>
+                                <div class="info">
+                                    <div class="title">
+                                        Mayur Thakkar
+                                    </div>
+                                   <b> <div class="desc">Entrepreneur</div>
+                                    <div class="desc">SC, USA</div></b>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>       
+      </div>
+      <div id="section3" class="container-fluid">
+            <h1 align="center" style="color:#d1e0eb">CONTACT</h1>
+        <div class="col-md-4 col-md-push-8">
+            <ul>
+                <li>
+                        For Inquiry:-
+                </li>
+                <li>
+                        Address: Jarod, Vadodara
+                </li>
+                <li>
+                        Contact Number: +91 9825979679
+                        
+                </li>
+                <li>
+                        Email id: durga_petrolium@yahoo.in 
+                        
+                </li>
+            </ul>
+        </div>
+      </div>
+      <footer>
+      <div class="footer-copyright">
+            <div class="container-fluid">
+               <h2 align="center"> © 2018 Copyright: <a href="#"> DurgaPetroleum </a></h2>
+    
+            </div>
+        </div>
+    </footer>  
+   
+      <script>
+      $(document).ready(function(){
+        // Add scrollspy to <body>
+        $('body').scrollspy({target: ".navbar", offset: 50});   
+      
+        // Add smooth scrolling on all links inside the navbar
+        $("#myNavbar a").on('click', function(event) {
+          // Make sure this.hash has a value before overriding default behavior
+          if (this.hash !== "") {
+            // Prevent default anchor click behavior
+            event.preventDefault();
+      
+            // Store hash
+            var hash = this.hash;
+      
+            // Using jQuery's animate() method to add smooth page scroll
+            // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+            $('html, body').animate({
+              scrollTop: $(hash).offset().top
+            }, 800, function(){
+         
+              // Add hash (#) to URL when done scrolling (default click behavior)
+              window.location.hash = hash;
+            });
+          }  // End if
+        });
+      });
+      </script>
+{% endblock %}
+
+<section once="" class="cid-qv5AM4LlJp" id="footer6-3l" data-rv-view="8874">
+
+    
+
+    
+
+        <div class="container">
+            <div class="media-container-row align-center mbr-white">
+                <div class="col-12">
+                    <p class="mbr-text mb-0 mbr-fonts-style display-7">
+                        © Copyright 2017 <a href="https://mobirise.com/bootstrap-template/" class="text-white">Free Bootstrap Templates</a> - All Rights Reserved
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>

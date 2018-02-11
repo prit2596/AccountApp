@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+<head>
+        <style type="text/css">
+            body {
+                font-weight: 200;
+                font-size: 14px;
+            }
+            .header {
+                font-size: 20px;
+                font-weight: 100;
+                text-align: center;
+                color: #007cae;
+            }
+            .title {
+                font-size: 22px;
+                font-weight: 100;
+               /* text-align: right;*/
+               padding: 10px 20px 0px 20px;  
+            }
+            .title span {
+                color: #007cae;
+            }
+            .details {
+                padding: 10px 20px 0px 20px;
+                text-align: left !important;
+                /*margin-left: 40%;*/
+            }
+            .hrItem {
+                border: none;
+                height: 1px;
+                /* Set the hr color */
+                color: #333; /* old IE */
+                background-color: #fff; /* Modern Browsers */
+            }
+        </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Preview</title>
+
+    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet" type="text/css" />
+    <link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet" type="text/css" />
+    <link href="{% static "css/animate.min.css" %}" rel="stylesheet" type="text/css" />
+    <link href="{% static "css/lightbox.css" %}" rel="stylesheet" type="text/css" />
+    <link href="{% static "css/main.css" %}" rel="stylesheet" type="text/css" />
+    <link href="{% static "css/responsive.css" %}" rel="stylesheet" type="text/css" />
+    <link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css" />
+    <script src="{% static "js/jquery.js" %}" type="text/javascript"></script>
+    <script src="{% static "js/bootstrap.min.js" %}" type="text/javascript"></script>
+</head>
+<script>
+    x=1;
+</script>
+<body>
+    <div class="jumbotron">
+        <h1 align="center">DURGA PETROLEUM</h1>
+        <div class="col-md-4">
+                <h3>
+                        GSTIN 24AAFFD4863M1Z6<br>
+                        RSL NO.35/2008<br>
+                        Price Incl. of VAT<br> 
+                </h3>
+        </div>
+        <div class="col-md-5">
+                <h3>
+                        Party Name: <b>{{party_name}}</b><br>
+                        Date: <b> {{today_date}}</b><br>
+                        Period: <b> {{start_date}} to {{end_date}}</b><br> 
+                        Bill No: <b>{{bill}} </b><br>
+                    </h3>
+        </div>
+        
+        <div class="col-md-3">
+            <h3>
+                <b>Address: </b> Petroleum<br>
+                        Halol Road,AT.Jarod<br>
+                        Ta.Waghodia,Dist.Vadodara<br>
+                <b>Mobile.</b>9825979679<br>
+                RETAIL INVOICE-CREDIT<br>
+            </h3>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+    </div>
+    <div class="col-md-12">
+            {% if dates %}
+            <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">Sr No.</th>
+                        <th scope="col">Item</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Vehicle No.</th>
+                        <th scope="col">Challan No.</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Rate</th>
+                        <th scope="col">Amount</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for i in dates %}
+                      <tr>
+                        <th scope="row">{{ i.sr_no }}</th>
+                        <td>{{i.item}}</td>
+                        <td>{{i.date}}</td>
+                        <td>{{i.vehicle_no}}</td>
+                        <td>{{i.challan_no}}</td>
+                        <td>{{i.quantity}}</td>
+                        <td>{{i.rate}}</td>
+                        <td>{{i.amount}}</td>
+                        </tr>
+                      {% endfor %}
+                      <tr>
+                            <th scope="row"></th>
+                            <td><h3><b>TOTAL:</b></h3></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><h3><b>{{total_quantity}}</b></h3></td>
+                            <td></td>
+                            <td><h3><b>{{total_amount}}</b></h3></td>
+                            </tr>
+     
+                    </tbody>
+            </table>    
+        {%endif %} 
+
+        <br>
+        <br>
+        <br>
+        <h2><b>Durga Petroleum</b></h2>
+        <h2><b>Partners</b></h2>
+    </div>
+</body>
+</html>
+
